@@ -17,5 +17,15 @@ const CategorySchema = new Schema(
 );
 
 // ! FALTA COMPLETAR ACA
+// Virtual para populate inverso con assets
+CategorySchema.virtual('assets', {
+  ref: 'Asset',
+  localField: '_id',
+  foreignField: 'categories'
+});
+
+// Asegurar que los virtuals se incluyan en JSON
+CategorySchema.set('toJSON', { virtuals: true });
+CategorySchema.set('toObject', { virtuals: true });
 
 export const CategoryModel = model("Category", CategorySchema);
