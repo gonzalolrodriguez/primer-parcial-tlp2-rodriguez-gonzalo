@@ -1,0 +1,222 @@
+{
+	"info": {
+		"_postman_id": "c6755d19-9e2e-4efb-8208-6fe49f59f6ec",
+		"name": "Primer Parcial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "17079112"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3005/api/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": "http://localhost:3005/api/auth/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "Ver Perfil",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3005/api/auth/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"\",\r\n    \"email\": \"\",\r\n    \"password\": \"\",\r\n    \"role\": \"\",\r\n    \"profile\": {\r\n        \"employeeNumber\": \"\",\r\n        \"firstName\": \"\",\r\n        \"lastName\": \"\",\r\n        \"phone\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3005/api/auth/register"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Eliminar un Usuario",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:3005/api/users/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Ver todos los Usuarios",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3005/api/users"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Eliminar una Categoria",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:3005/api/categories/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear una Categoria",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"description\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3005/api/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "Ver todas las Categorias",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3005/api/categories"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Assets",
+			"item": [
+				{
+					"name": "Eliminar un Asset",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:3005/api/assets/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear un Asset",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inventoryNumber\": \"\",\r\n    \"description\": \"\",\r\n    \"brand\": \"\",\r\n    \"model\": \"\",\r\n    \"status\": \"\",\r\n    \"acquisitionDate\": \"\",\r\n    \"acquisitionValue\": 1,\r\n    \"responsible\": \"\",\r\n    \"categories\": [\"\",\"\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3005/api/assets"
+					},
+					"response": []
+				},
+				{
+					"name": "Ver todos los Assets Responsible",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3005/api/assets/my-assets"
+					},
+					"response": []
+				},
+				{
+					"name": "Ver todos los Assets",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3005/api/assets"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -10,16 +10,16 @@ export const register = async (req, res) => {
     // Hashear la contraseña
     const hashedPassword = await hashPassword(password);
 
-    // Crear usuario con profile embebido - mapear campos según validaciones
+    // Crear usuario con profile embebido - mapear campos del formato Postman al modelo
     const user = new UserModel({
       username,
       email,
       password: hashedPassword,
       role,
       profile: {
-        employee_number: profile.employee_number,
-        first_name: profile.first_name,
-        last_name: profile.last_name,
+        employee_number: profile.employeeNumber,
+        first_name: profile.firstName,
+        last_name: profile.lastName,
         phone: profile.phone
       }
     });

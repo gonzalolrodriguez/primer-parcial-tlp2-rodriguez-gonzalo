@@ -40,7 +40,7 @@ export const registerValidation = [
     .isIn(["secretary", "administrator"])
     .withMessage("El rol debe ser 'secretary' o 'administrator'"),
 
-  body("profile.employee_number")
+  body("profile.employeeNumber")
     .notEmpty()
     .withMessage("El número de empleado es requerido")
     .matches(/^[A-Z]{2}[0-9]{4}$/)
@@ -54,7 +54,7 @@ export const registerValidation = [
       return true;
     }),
 
-  body("profile.first_name")
+  body("profile.firstName")
     .notEmpty()
     .withMessage("El nombre es requerido")
     .isLength({ min: 2, max: 50 })
@@ -62,7 +62,7 @@ export const registerValidation = [
     .matches(/^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/)
     .withMessage("El nombre solo puede contener letras"),
 
-  body("profile.last_name")
+  body("profile.lastName")
     .notEmpty()
     .withMessage("El apellido es requerido")
     .isLength({ min: 2, max: 50 })
