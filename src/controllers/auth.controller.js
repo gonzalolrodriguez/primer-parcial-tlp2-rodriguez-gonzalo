@@ -10,13 +10,18 @@ export const register = async (req, res) => {
     // Hashear la contraseña
     const hashedPassword = await hashPassword(password);
 
-    // Crear usuario con profile embebido
+    // Crear usuario con profile embebido - mapear campos según validaciones
     const user = new UserModel({
       username,
       email,
       password: hashedPassword,
       role,
-      profile
+      profile: {
+        employee_number: profile.employee_number,
+        first_name: profile.first_name,
+        last_name: profile.last_name,
+        phone: profile.phone
+      }
     });
 
     await user.save();
@@ -31,10 +36,10 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     // TODO: buscar user, validar password, firmar JWT y setear cookie httpOnly
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    // Buscar usuario por username
-    const user = await UserModel.findOne({ username, deletedAt: null });
+    // Buscar usuario por email
+    const user = await UserModel.findOne({ email, deletedAt: null });
     if (!user) {
       return res.status(401).json({ msg: "Credenciales inválidas" });
     }

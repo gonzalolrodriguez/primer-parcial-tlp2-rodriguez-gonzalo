@@ -21,10 +21,10 @@ const UserSchema = new Schema(
     deletedAt: { type: Date, default: null },
     // ! FALTA COMPLETAR ACA
     profile: {
-      firstName: { type: String, required: true },
-      lastName: { type: String, required: true },
-      phone: { type: String, required: true },
-      address: { type: String, required: true }
+      employee_number: { type: String, required: true, unique: true },
+      first_name: { type: String, required: true, minlength: 2, maxlength: 50 },
+      last_name: { type: String, required: true, minlength: 2, maxlength: 50 },
+      phone: { type: String }
     }
   },
   { timestamps: true }

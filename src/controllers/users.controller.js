@@ -25,6 +25,11 @@ export const deleteUser = async (req, res) => {
     // TODO: eliminación lógica (deletedAt) (solo admin)
     const { id } = req.params;
 
+    // Verificar que el ID sea válido
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+      return res.status(400).json({ msg: "ID de usuario inválido" });
+    }
+
     const user = await UserModel.findById(id);
     if (!user || user.deletedAt) {
       return res.status(404).json({ msg: "Usuario no encontrado" });

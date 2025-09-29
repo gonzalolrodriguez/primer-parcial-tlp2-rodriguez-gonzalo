@@ -4,26 +4,26 @@ export const createAsset = async (req, res) => {
   try {
     // TODO: crear asset (usuario autenticado)
     const {
-      inventoryNumber,
+      inventory_number,
       description,
       brand,
       model,
       status,
-      acquisitionDate,
-      acquisitionValue,
-      responsible,
+      acquisition_date,
+      acquisition_value,
+      responsible_id,
       categories
     } = req.body;
 
     const asset = new AssetModel({
-      inventoryNumber,
+      inventoryNumber: inventory_number,
       description,
       brand,
       model,
       status,
-      acquisitionDate,
-      acquisitionValue,
-      responsible,
+      acquisitionDate: acquisition_date,
+      acquisitionValue: acquisition_value,
+      responsible: responsible_id,
       categories
     });
 
@@ -70,6 +70,11 @@ export const deleteAsset = async (req, res) => {
     const { id } = req.params;
     const userId = req.user.id;
 
+    // Verificar que el ID sea válido
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+      return res.status(400).json({ msg: "ID de asset inválido" });
+    }
+
     const asset = await AssetModel.findById(id);
     if (!asset) {
       return res.status(404).json({ msg: "Asset no encontrado" });
@@ -84,6 +89,7 @@ export const deleteAsset = async (req, res) => {
 
     return res.status(204).json({ msg: "Asset eliminado correctamente" });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ msg: "Error interno del servidor" });
   }
 };

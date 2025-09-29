@@ -38,6 +38,11 @@ export const deleteCategory = async (req, res) => {
     // TODO: eliminar category (solo admin) y actualizar assets que referencian
     const { id } = req.params;
 
+    // Verificar que el ID sea válido
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+      return res.status(400).json({ msg: "ID de categoría inválido" });
+    }
+
     const category = await CategoryModel.findById(id);
     if (!category) {
       return res.status(404).json({ msg: "Categoría no encontrada" });

@@ -1,4 +1,4 @@
-import { AssetModel } from "../models/mongoose/asset.model";
+import { AssetModel } from "../models/mongoose/asset.model.js";
 
 // * middleware para verificar si el usuario autenticado es responsable de un recurso
 export const responsibleMiddleware = async (req, res, next) => {
