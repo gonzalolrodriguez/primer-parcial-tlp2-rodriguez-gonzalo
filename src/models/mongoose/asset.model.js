@@ -32,7 +32,28 @@ const AssetSchema = new Schema(
       required: true
     }]
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    // Configurar índices para optimizar consultas del patrimonio judicial
+    indexes: [
+      { inventoryNumber: 1 },
+      { responsible: 1 },
+      { categories: 1 },
+      { status: 1 },
+      { acquisitionDate: -1 }
+    ]
+  }
 );
+
+// Middleware para eliminación en cascada - AssetCategory
+AssetSchema.pre('findOneAndDelete', async function () {
+  // Al eliminar un Asset, se eliminan automáticamente las asociaciones
+  // ya que categories es un array embebido que se elimina con el documento
+  console.log('Asset eliminado - asociaciones categories eliminadas automáticamente');
+});
+
+AssetSchema.pre('deleteOne', async function () {
+  console.log('Asset eliminado - asociaciones categories eliminadas automáticamente');
+});
 
 export const AssetModel = model("Asset", AssetSchema);

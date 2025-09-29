@@ -27,11 +27,20 @@ const UserSchema = new Schema(
       phone: { type: String }
     }
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    // Configurar índices para optimizar consultas del sistema judicial
+    indexes: [
+      { "profile.employee_number": 1 },
+      { email: 1 },
+      { username: 1 },
+      { deletedAt: 1 }
+    ]
+  }
 );
 
 // ! FALTA COMPLETAR ACA
-// Virtual para populate inverso con assets
+// Virtual para populate inverso con assets - relación 1:N User → Asset
 UserSchema.virtual('assets', {
   ref: 'Asset',
   localField: '_id',
